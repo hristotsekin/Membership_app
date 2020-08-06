@@ -32,6 +32,8 @@ namespace Membership_App.Models
         }
 
         public DbSet<Section> Sections { get; set; }
+
+        public DbSet<Part> Parts { get; set; }
     }
 
     
