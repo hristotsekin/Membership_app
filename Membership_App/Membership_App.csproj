@@ -174,8 +174,17 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Entities\Item.cs" />
+    <Compile Include="Entities\ItemType.cs" />
     <Compile Include="Entities\Part.cs" />
+    <Compile Include="Entities\Product.cs" />
+    <Compile Include="Entities\ProductItem.cs" />
+    <Compile Include="Entities\ProductLinkText.cs" />
+    <Compile Include="Entities\ProductType.cs" />
     <Compile Include="Entities\Section.cs" />
+    <Compile Include="Entities\Subscription.cs" />
+    <Compile Include="Entities\SubscriptionProduct.cs" />
+    <Compile Include="Entities\UserSubscription.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -186,6 +195,42 @@
     <Compile Include="Migrations\202008061309106_Part table added.cs" />
     <Compile Include="Migrations\202008061309106_Part table added.designer.cs">
       <DependentUpon>202008061309106_Part table added.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202008061314345_ItemType table added.cs" />
+    <Compile Include="Migrations\202008061314345_ItemType table added.designer.cs">
+      <DependentUpon>202008061314345_ItemType table added.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202008061457331_Item table added.cs" />
+    <Compile Include="Migrations\202008061457331_Item table added.designer.cs">
+      <DependentUpon>202008061457331_Item table added.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202008061510141_Product table added.cs" />
+    <Compile Include="Migrations\202008061510141_Product table added.designer.cs">
+      <DependentUpon>202008061510141_Product table added.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202008061512503_ProductType table added.cs" />
+    <Compile Include="Migrations\202008061512503_ProductType table added.designer.cs">
+      <DependentUpon>202008061512503_ProductType table added.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202008061517456_ProductLinkText table added.cs" />
+    <Compile Include="Migrations\202008061517456_ProductLinkText table added.designer.cs">
+      <DependentUpon>202008061517456_ProductLinkText table added.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202008061524496_Subscription table added.cs" />
+    <Compile Include="Migrations\202008061524496_Subscription table added.designer.cs">
+      <DependentUpon>202008061524496_Subscription table added.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202008061533412_ProductItem table added.cs" />
+    <Compile Include="Migrations\202008061533412_ProductItem table added.designer.cs">
+      <DependentUpon>202008061533412_ProductItem table added.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202008061550002_UserSubscription table was added.cs" />
+    <Compile Include="Migrations\202008061550002_UserSubscription table was added.designer.cs">
+      <DependentUpon>202008061550002_UserSubscription table was added.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202008061555580_Three custom columns was added to IdentityUser table.cs" />
+    <Compile Include="Migrations\202008061555580_Three custom columns was added to IdentityUser table.designer.cs">
+      <DependentUpon>202008061555580_Three custom columns was added to IdentityUser table.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -280,6 +325,33 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202008061309106_Part table added.resx">
       <DependentUpon>202008061309106_Part table added.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202008061314345_ItemType table added.resx">
+      <DependentUpon>202008061314345_ItemType table added.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202008061457331_Item table added.resx">
+      <DependentUpon>202008061457331_Item table added.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202008061510141_Product table added.resx">
+      <DependentUpon>202008061510141_Product table added.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202008061512503_ProductType table added.resx">
+      <DependentUpon>202008061512503_ProductType table added.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202008061517456_ProductLinkText table added.resx">
+      <DependentUpon>202008061517456_ProductLinkText table added.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202008061524496_Subscription table added.resx">
+      <DependentUpon>202008061524496_Subscription table added.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202008061533412_ProductItem table added.resx">
+      <DependentUpon>202008061533412_ProductItem table added.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202008061550002_UserSubscription table was added.resx">
+      <DependentUpon>202008061550002_UserSubscription table was added.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202008061555580_Three custom columns was added to IdentityUser table.resx">
+      <DependentUpon>202008061555580_Three custom columns was added to IdentityUser table.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
