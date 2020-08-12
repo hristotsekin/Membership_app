@@ -1,0 +1,32 @@
+﻿@model Membership_App.Entities.Section
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Section</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.LabelFor(model => model.Title)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+
+    </dl>
+</div>
+
+
+    <hr/>
+    <div class="form-actions no-color">
+
+        
+        @Html.Partial("_EditButton", @Model.Id)
+
+        @Html.Partial("_BackToListButton")
+    </div>

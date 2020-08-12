@@ -1,0 +1,44 @@
+﻿@model Membership_App.Areas.Admin.Models.ButtonModel
+
+@using Membership_App.Areas.Admin.Models
+
+    <div class="button-group" role="group">
+        @Html.Partial("_ButtonSingle", new ButtonModel
+        {
+            Action = "Edit",
+            Text = "Edit",
+            Glyph = "glyphicon-pencil",
+            ButtonType = "btn-primary",
+            Id = Model.Id,
+            ItemId = Model.ItemId,
+            ProductId = Model.ProductId,
+            SubscriptionId = Model.SubscriptionId
+
+        })
+
+        @Html.Partial("_ButtonSingle", new ButtonModel
+        {
+            Action = "Details",
+            Text = "Details",
+            Glyph = "glyphicon-list",
+            ButtonType = "btn-success",
+            Id = Model.Id,
+            ItemId = Model.ItemId,
+            ProductId = Model.ProductId,
+            SubscriptionId = Model.SubscriptionId
+
+        })
+
+        @Html.Partial("_ButtonSingle", new ButtonModel
+        {
+            Action = "Delete",
+            Text = "Delete",
+            Glyph = "glyphicon-trash",
+            ButtonType = "btn-danger",
+            Id = Model.Id,
+            ItemId = Model.ItemId,
+            ProductId = Model.ProductId,
+            SubscriptionId = Model.SubscriptionId
+
+        })
+    </div>
