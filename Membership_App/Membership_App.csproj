@@ -269,6 +269,10 @@
     <Content Include="Areas\Admin\Views\Shared\_CreateNewSectionButton.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\_ButtonsList.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\_ButtonSingle.cshtml" />
+    <Content Include="Areas\Admin\Views\Part\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\Part\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Part\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Part\Details.cshtml" />
     <None Include="Scripts\jquery-3.5.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.5.1.js" />
     <Content Include="Scripts\jquery-3.5.1.min.js" />
