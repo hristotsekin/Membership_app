@@ -13,16 +13,26 @@ namespace Membership_App.Areas.Admin.Controllers
 {
     public class SectionController : Controller
     {
+        private readonly UnitOfWork _unitOfWork;
 
-        private ApplicationDbContext db = new ApplicationDbContext();
+        public SectionController()
+        {
+            _unitOfWork = new UnitOfWork();
+        }
+        
+        public SectionController(UnitOfWork unitOfWork)
+        {
+            _unitOfWork = unitOfWork;
+        }
+        
         // GET: Admin/Section
-        public async  Task<ActionResult> Index()
+        public ActionResult Index()
         {
 
-            return View(await db.Sections.ToListAsync());
+            return View(_unitOfWork.Repository<Section>().GetAll());
         }
 
-        public async Task<ActionResult> Details(int? id)
+        public  ActionResult Details(int id)
         {
 
             if (id == null)
@@ -30,7 +40,7 @@ namespace Membership_App.Areas.Admin.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
-            Section section = await db.Sections.FindAsync(id);
+            Section section =  _unitOfWork.Repository<Section>().Get(id);
 
             if (section == null)
             {
@@ -47,13 +57,13 @@ namespace Membership_App.Areas.Admin.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create(
+        public ActionResult Create(
             [Bind(Include = "Id,Title")] Section section)
         {
             if (ModelState.IsValid)
             {
-                db.Sections.Add(section);
-                await db.SaveChangesAsync();
+                _unitOfWork.Repository<Section>().Add(section);
+                _unitOfWork.Save();
                 return RedirectToAction("Index");
             }
 
@@ -62,14 +72,14 @@ namespace Membership_App.Areas.Admin.Controllers
 
 
 
-        public async Task<ActionResult> Edit(int? id)
+        public ActionResult Edit(int id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
-            Section section = await db.Sections.FindAsync(id);
+            Section section = _unitOfWork.Repository<Section>().Get(id);
 
             if (section == null)
             {
@@ -87,8 +97,9 @@ namespace Membership_App.Areas.Admin.Controllers
 
             if (ModelState.IsValid)
             {
-                db.Entry(section).State = EntityState.Modified;
-                await db.SaveChangesAsync();
+                Section s = _unitOfWork.Repository<Section>().Get(section.Id);
+                s.Title = section.Title;
+                _unitOfWork.Save();
                 return RedirectToAction("Index");
             }
 
@@ -97,14 +108,11 @@ namespace Membership_App.Areas.Admin.Controllers
         }
 
 
-        public async Task<ActionResult> Delete(int? id)
+        public ActionResult Delete(int id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
+            
 
-            Section section = await db.Sections.FindAsync(id);
+            Section section = _unitOfWork.Repository<Section>().Get(id);
 
             if (section == null)
             {
@@ -116,27 +124,16 @@ namespace Membership_App.Areas.Admin.Controllers
 
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> ConfirmDelete(int id)
+        public ActionResult DeleteConfirmed(int id)
         {
 
-            Section section = await db.Sections.FindAsync(id);
-            if (section != null)
-            {
-                db.Sections.Remove(section);
-                await db.SaveChangesAsync();
-
-            }
+            Section section = _unitOfWork.Repository<Section>().Get(id);    
+            _unitOfWork.Repository<Section>().Remove(section);
+            _unitOfWork.Save();
 
             return RedirectToAction("Index");
         }
 
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
-        }
+       
     }
 }

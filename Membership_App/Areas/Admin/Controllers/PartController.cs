@@ -15,6 +15,14 @@ namespace Membership_App.Areas.Admin.Controllers
     {
         private ApplicationDbContext db = new ApplicationDbContext();
         // GET: Admin/Section
+
+        private readonly IUnitOfWork _unitOfWork;
+
+        public PartController(IUnitOfWork unitOfWork)
+        {
+            _unitOfWork = unitOfWork;
+        }
+
         public async Task<ActionResult> Index()
         {
 
