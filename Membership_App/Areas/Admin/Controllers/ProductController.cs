@@ -1,4 +1,5 @@
-﻿using Membership_App.Models;
+﻿using Membership_App.Entities;
+using Membership_App.Models;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -11,12 +12,14 @@ namespace Membership_App.Areas.Admin.Controllers
 {
     public class ProductController : Controller
     {
-        private ApplicationDbContext db = new ApplicationDbContext();
-        // GET: Admin/Product
-        public async Task<ActionResult> Index()
+        
+
+        public ActionResult Index()
         {
-            
+
             return View();
         }
+
+        
     }
 }

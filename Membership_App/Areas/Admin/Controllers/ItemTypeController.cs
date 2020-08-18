@@ -1,29 +1,26 @@
-﻿using Membership_App.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Data.Entity;
 using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using Membership_App.Entities;
+using Membership_App.Models;
 
 namespace Membership_App.Areas.Admin.Controllers
 {
-    public class PartController : Controller
+    public class ItemTypeController : Controller
     {
-        private ApplicationDbContext db = new ApplicationDbContext();
-        // GET: Admin/Section
-
+        // GET: Admin/ItemType
         private readonly UnitOfWork _unitOfWork;
 
-        public PartController()
+        public ItemTypeController()
         {
             _unitOfWork = new UnitOfWork();
         }
 
-        public PartController(UnitOfWork unitOfWork)
+        public ItemTypeController(UnitOfWork unitOfWork)
         {
             _unitOfWork = unitOfWork;
         }
@@ -31,25 +28,21 @@ namespace Membership_App.Areas.Admin.Controllers
         public ActionResult Index()
         {
 
-            return View(_unitOfWork.Repository<Part>().GetAll());
+            return View(_unitOfWork.Repository<ItemType>().GetAll());
         }
 
         public ActionResult Details(int id)
         {
 
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
 
-            Part part = _unitOfWork.Repository<Part>().Get(id);
+            ItemType itemType = _unitOfWork.Repository<ItemType>().Get(id);
 
-            if (part == null)
+            if (itemType == null)
             {
                 return HttpNotFound();
             }
 
-            return View(part);
+            return View(itemType);
         }
 
         public async Task<ActionResult> Create()
@@ -60,67 +53,64 @@ namespace Membership_App.Areas.Admin.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Create(
-            [Bind(Include = "Id,Title")] Part part)
+            [Bind(Include = "Id,Title")] ItemType itemType)
         {
             if (ModelState.IsValid)
             {
-                _unitOfWork.Repository<Part>().Add(part);
+                _unitOfWork.Repository<ItemType>().Add(itemType);
                 _unitOfWork.Save();
                 return RedirectToAction("Index");
             }
 
-            return View(part);
+            return View(itemType);
         }
 
 
 
         public ActionResult Edit(int id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
+            
 
-            Part part = _unitOfWork.Repository<Part>().Get(id);
+            ItemType itemType = _unitOfWork.Repository<ItemType>().Get(id);
 
-            if (part == null)
+            if (itemType == null)
             {
                 return HttpNotFound();
             }
 
-            return View(part);
+            return View(itemType);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(
-            [Bind(Include = "Id,Title")] Part part)
+            [Bind(Include = "Id,Title")] ItemType itemType)
         {
 
             if (ModelState.IsValid)
             {
-                Part p =_unitOfWork.Repository<Part>().Get(part.Id);
-                p.Title = part.Title;
+                ItemType p = _unitOfWork.Repository<ItemType>().Get(itemType.Id);
+                p.Title = itemType.Title;
                 _unitOfWork.Save();
                 return RedirectToAction("Index");
             }
 
 
-            return View(part);
+            return View(itemType);
         }
 
 
         public ActionResult Delete(int id)
         {
-            
-            Part part = _unitOfWork.Repository<Part>().Get(id);
 
-            if (part == null)
+            ItemType itemType = _unitOfWork.Repository<ItemType>().Get(id);
+
+            if (itemType == null)
             {
                 return HttpNotFound();
             }
 
-            return View(part);
+            return View(itemType);
         }
 
         [HttpPost, ActionName("Delete")]
@@ -128,17 +118,15 @@ namespace Membership_App.Areas.Admin.Controllers
         public ActionResult ConfirmDelete(int id)
         {
 
-            Part part = _unitOfWork.Repository<Part>().Get(id);
-            if (part != null)
+            ItemType itemType = _unitOfWork.Repository<ItemType>().Get(id);
+            if (itemType != null)
             {
-                _unitOfWork.Repository<Part>().Remove(part);
+                _unitOfWork.Repository<ItemType>().Remove(itemType);
                 _unitOfWork.Save();
 
             }
 
             return RedirectToAction("Index");
         }
-
-        
     }
 }
