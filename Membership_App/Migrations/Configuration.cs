@@ -1,6 +1,4 @@
-﻿using System.Data.Entity.Migrations.Infrastructure;
-
-namespace Membership_App.Migrations
+﻿namespace Membership_App.Migrations
 {
     using System;
     using System.Data.Entity;
@@ -11,8 +9,7 @@ namespace Membership_App.Migrations
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = true;
-            AutomaticMigrationDataLossAllowed = true;
+            AutomaticMigrationsEnabled = false;
         }
 
         protected override void Seed(Membership_App.Models.ApplicationDbContext context)

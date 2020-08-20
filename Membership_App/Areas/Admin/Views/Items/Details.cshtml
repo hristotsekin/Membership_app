@@ -1,0 +1,85 @@
+﻿@model Membership_App.Entities.Item
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+
+<div>
+    <h4>Item</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.LabelFor(model => model.Title)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+        <dt>
+            @Html.LabelFor(model => model.Description)
+        </dt>
+        <dd>
+            <p>@Html.DisplayFor(model => model.Description)</p>
+        </dd>
+        <dt>
+            @Html.LabelFor(model => model.Url)
+        </dt>
+        <dd>
+            <p>@Html.DisplayFor(model => model.Url)</p>
+        </dd>
+        <dt>
+            @Html.LabelFor(model => model.ImageUrl)
+        </dt>
+        <dd>
+            <p>@Html.DisplayFor(model => model.ImageUrl)</p>
+        </dd>
+        <dt>
+            @Html.LabelFor(model => model.HTML)
+        </dt>
+        <dd>
+            <p>@Html.DisplayFor(model => model.HTML)</p>
+        </dd>
+        <dt>
+            @Html.LabelFor(model => model.WaitDays)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.WaitDays)
+        </dd>
+        <dt>
+            @Html.LabelFor(model => model.ItemTypes)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ItemTypes.Where(s => s.Id == Model.ItemTypeId).FirstOrDefault().Title)
+        </dd>
+        <dt>
+            @Html.LabelFor(model => model.Sections)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Sections.Where(s => s.Id == Model.SectionId).FirstOrDefault().Title)
+        </dd>
+        <dt>
+            @Html.LabelFor(model => model.Parts)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Parts.Where(s => s.Id == Model.PartId).FirstOrDefault().Title)
+        </dd>
+        <dt>
+            @Html.LabelFor(model => model.IsFree)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.IsFree)
+        </dd>
+    </dl>
+</div>
+
+
+<hr />
+<div class="form-actions no-color">
+
+
+    @Html.Partial("_EditButton", @Model.Id)
+
+    @Html.Partial("_BackToListButton")
+</div>

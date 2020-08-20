@@ -30,7 +30,7 @@ namespace Membership_App.Models
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext()
-            : base("DefaultConnection", throwIfV1Schema: false)
+            : base("Memberships", throwIfV1Schema: false)
         {
         }
 
