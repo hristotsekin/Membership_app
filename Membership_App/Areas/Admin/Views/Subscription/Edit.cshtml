@@ -1,0 +1,62 @@
+﻿@model Membership_App.Entities.Subscription
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+
+<h2>Edit</h2>
+
+<h4>Item</h4>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @Html.HiddenFor(m => m.Id)
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.LabelFor(model => model.Title)
+
+        </dt>
+        <dd>
+            <p>
+                @Html.EditorFor(m => m.Title, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(m => m.Title, "", new { @class = "text-danger" })
+            </p>
+        </dd>
+
+        <dt>
+            @Html.LabelFor(model => model.Description)
+
+        </dt>
+        <dd>
+            <p>
+                @Html.TextAreaFor(m => m.Description, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.Description, "", new { @class = "text-danger" })
+            </p>
+        </dd>
+
+        <dt>
+            @Html.LabelFor(model => model.RegistrationCode)
+
+        </dt>
+        <dd>
+            <p>
+                @Html.EditorFor(m => m.RegistrationCode, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(m => m.RegistrationCode, "", new { @class = "text-danger" })
+            </p>
+
+    </dl>
+
+    <div class="form-actions">
+        <input type="submit" value="Save" class="btn btn-success btn-sm" />
+    </div>
+
+}
+
+<hr />
+
+@Html.Partial("_BackToListButton")
+
