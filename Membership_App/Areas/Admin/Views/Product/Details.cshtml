@@ -1,0 +1,54 @@
+﻿@model Membership_App.Areas.Admin.Models.ProductModel
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+
+<div>
+    <h4>Item</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.LabelFor(model => model.Title)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+        <dt>
+            @Html.LabelFor(model => model.Description)
+        </dt>
+        <dd>
+            <p>@Html.DisplayFor(model => model.Description)</p>
+        </dd>
+        <dt>
+            @Html.LabelFor(model => model.ImageUrl)
+        </dt>
+        <dd>
+            <p>@Html.DisplayFor(model => model.ImageUrl)</p>
+        </dd>
+
+        <dt>
+            @Html.LabelFor(model => model.ProductLinkText)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ProductLinkText)
+        </dd>
+        <dt>
+            @Html.LabelFor(model => model.ProductType)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ProductType)
+        </dd>
+
+    </dl>
+</div>
+<hr />
+<div class="form-actions no-color">
+
+
+    @Html.Partial("_EditButton", @Model.Id)
+
+    @Html.Partial("_BackToListButton")
+</div>

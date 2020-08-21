@@ -1,0 +1,106 @@
+﻿@model Membership_App.Areas.Admin.Models.ProductModel
+
+@using Membership_App.Extensions
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+
+<div class="container">
+
+
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            <h4>Product</h4>
+
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+
+                @Html.LabelFor(model => model.Title, htmlAttributes: new { @class = "control-label col-md-2 col-sm-2" })
+
+                <div class="col-md-10 col-sm-10">
+                    @Html.EditorFor(model => model.Title,
+                        new
+                        {
+                            htmlAttributes = new
+                            {
+                                @class = "form-control",
+                                @PlaceHolder = "Product Title"
+                            }
+                        })
+                    @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2 col-sm-2" })
+
+                <div class="col-md-10 col-sm-10">
+                    @Html.TextAreaFor(model => model.Description,
+                        new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.ImageUrl, htmlAttributes: new { @class = "control-label col-md-2 col-sm-2" })
+
+                <div class="col-md-10 col-sm-10">
+                    @Html.EditorFor(model => model.ImageUrl,
+                        new { @HtmlAttributes =  new { @class = "form-control", @PlaceHolder = "Url of the image" } })
+                    @Html.ValidationMessageFor(model => model.ImageUrl, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.ProductTypes, htmlAttributes: new { @class = "control-label col-md-2 col-sm-2" })
+
+                <div class="col-md-10 col-sm-10">
+                    @Html.DropDownListFor(model => model.ProductTypeId,
+                        Model.ProductTypes.ToSelectListItem(Model.ProductTypeId),
+                        new { @class = "form-control", @PlaceHolder = "Section Title" })
+                    @Html.ValidationMessageFor(model => model.ProductTypes, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.ProductLinkTexts, htmlAttributes: new { @class = "control-label col-md-2 col-sm-2" })
+
+                <div class="col-md-10 col-sm-10">
+                    @Html.DropDownListFor(model => model.ProductLinkTextId,
+                        Model.ProductLinkTexts.ToSelectListItem(Model.ProductLinkTextId),
+                        new { @class = "form-control", @PlaceHolder = "Section Title" })
+                    @Html.ValidationMessageFor(model => model.ProductLinkTexts, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            
+
+            <div class="form-group">
+
+                <div class="col-md-offset-2 col-md-10 col-sm-offset-2 col-sm-10">
+                    <input type="submit" value="Create" class="btn btn-success" />
+                </div>
+            </div>
+        </div>
+
+
+
+    }
+
+
+    <a class="btn btn-primary btn-sm" href="@Url.Action("Index")">
+        <span class="glyphicon glyphicon-list"></span>
+        <span>Back to List</span>
+    </a>
+
+
+
+</div>

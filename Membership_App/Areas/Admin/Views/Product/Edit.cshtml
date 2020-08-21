@@ -1,0 +1,92 @@
+﻿@model Membership_App.Areas.Admin.Models.ProductModel
+
+@using Membership_App.Extensions
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+
+
+<h4>Product</h4>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @Html.HiddenFor(m => m.Id)
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.LabelFor(model => model.Title)
+
+        </dt>
+        <dd>
+            <p>
+                @Html.EditorFor(m => m.Title, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(m => m.Title, "", new { @class = "text-danger" })
+            </p>
+        </dd>
+
+        <dt>
+            @Html.LabelFor(model => model.Description)
+
+        </dt>
+        <dd>
+            <p>
+                @Html.TextAreaFor(m => m.Description, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.Description, "", new { @class = "text-danger" })
+            </p>
+        </dd>
+
+        <dt>
+            @Html.LabelFor(model => model.ImageUrl)
+
+        </dt>
+        <dd>
+            <p>
+                @Html.EditorFor(m => m.ImageUrl, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(m => m.ImageUrl, "", new { @class = "text-danger" })
+            </p>
+        </dd>
+
+        
+
+        <dt>
+            @Html.LabelFor(model => model.ProductTypes)
+
+        </dt>
+        <dd>
+            <p>
+                @Html.DropDownListFor(model => model.ProductTypeId,
+                    Model.ProductTypes.ToSelectListItem(Model.ProductTypeId),
+                    new { @class = "form-control", @PlaceHolder = "Section Title" })
+                @Html.ValidationMessageFor(m => m.ProductTypeId, "", new { @class = "text-danger" })
+            </p>
+        </dd>
+
+        <dt>
+            @Html.LabelFor(model => model.ProductLinkTexts)
+
+        </dt>
+        <dd>
+            <p>
+                @Html.DropDownListFor(model => model.ProductLinkTextId,
+                    Model.ProductLinkTexts.ToSelectListItem(Model.ProductLinkTextId),
+                    new { @class = "form-control", @PlaceHolder = "Section Title" })
+                @Html.ValidationMessageFor(m => m.ProductLinkTextId, "", new { @class = "text-danger" })
+            </p>
+        </dd>
+
+    </dl>
+
+    <div class="form-actions">
+        <input type="submit" value="Save" class="btn btn-success btn-sm" />
+    </div>
+
+}
+
+<hr />
+
+@Html.Partial("_BackToListButton")

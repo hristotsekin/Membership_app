@@ -1,7 +1,86 @@
-﻿
+﻿@model IEnumerable<Membership_App.Areas.Admin.Models.ProductModel>
 
+@using Membership_App.Areas.Admin.Models
 @{
     ViewBag.Title = "Index";
 }
 
 <h2>Product</h2>
+
+
+<h4>Products</h4>
+
+<div class="row">
+    <div class="col-md-12">
+        <p>
+
+            @Html.Partial("_CreateNewSectionButton");
+
+        </p>
+
+    </div>
+
+</div>
+
+<div class="row">
+    <div class="panel panel-default">
+        <!-- Default panel contents -->
+        <div class="panel-heading">
+            <table class="table table-striped table-condensed">
+                <thead>
+                    <tr>
+                        <th class="col-md-1" >
+                            @Html.DisplayNameFor(model => model.Title)
+                        </th>
+                        <th class="col-md-2">
+                            @Html.DisplayNameFor(model => model.Description)
+                        </th>
+                        
+                        <th class="col-md-2">
+                            @Html.DisplayNameFor(model => model.ProductLinkText)
+                        </th>
+                        <th class="col-md-2">
+                            @Html.DisplayNameFor(model => model.ProductType)
+                        </th>
+
+                        <th class="col-md-2"></th>
+                    </tr>
+                </thead>
+        </div>
+
+
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(model => item.Title)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(model => item.Description)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => item.ProductLinkText)
+                        (@Html.DisplayFor(model => item.ProductLinkTextId))
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => item.ProductType)
+                        (@Html.DisplayFor(model => item.ProductTypeId))
+                    </td>
+                    
+                    <td colspan="2">
+                        @Html.Partial("_ButtonsList", new ButtonModel
+                        {
+                            Id = item.Id
+                        })
+
+                    </td>
+                </tr>
+
+            }
+        </tbody>
+        </table>
+
+    </div>
+</div>

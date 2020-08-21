@@ -1,0 +1,70 @@
+﻿@model Membership_App.Areas.Admin.Models.ProductModel
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+
+<div>
+    <h4>Product</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.LabelFor(model => model.Title)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+        <dt>
+            @Html.LabelFor(model => model.Description)
+        </dt>
+        <dd>
+            <p>@Html.DisplayFor(model => model.Description)</p>
+        </dd>
+
+        <dt>
+            @Html.LabelFor(model => model.ImageUrl)
+        </dt>
+        <dd>
+            <p>@Html.DisplayFor(model => model.ImageUrl)</p>
+        </dd>
+
+        <dt>
+            @Html.LabelFor(model => model.ProductLinkText)
+        </dt>
+        <dd>
+            <p>@Html.DisplayFor(model => model.ProductLinkText)</p>
+        </dd>
+        
+        <dt>
+            @Html.LabelFor(model => model.ProductType)
+        </dt>
+        <dd>
+            <p>@Html.DisplayFor(model => model.ProductType)</p>
+</dd>
+
+
+    </dl>
+</div>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+
+
+    <div class="form-actions no-color">
+        <input type="submit" value="Delete" class="btn btn-danger btn-sm" />
+
+    </div>
+
+}
+
+<hr />
+<div class="form-actions no-color">
+
+
+    @Html.Partial("_BackToListButton")
+</div>
